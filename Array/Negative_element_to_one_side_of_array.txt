@@ -1,0 +1,22 @@
+Move all negative numbers to beginning and positive to end.Order doesn't matter.
+Input: -12, 11, -13, -5, 6, -7, 5, -3, -6
+Output: -12 -13 -5 -7 -3 -6 11 6 5
+
+
+
+def negative_to_one_side(arr):
+    
+    negative_starting_index=0 
+
+    for i in range(len(arr)):
+
+        if arr[i]<0: # if element is -ve swap it with the element at negative_starting_index position.
+
+            arr[i],arr[negative_starting_index]=arr[negative_starting_index],arr[i]
+            negative_starting_index+=1
+        
+    return arr
+    
+ml=list(map(int,input().split()))
+ans=negative_to_one_side(ml)
+print(ans)
