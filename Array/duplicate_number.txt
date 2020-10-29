@@ -1,0 +1,19 @@
+Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
+
+There is only one duplicate number in nums, return this duplicate number.
+
+
+
+
+from collections import Counter
+
+def findDuplicate(self, nums: List[int]) -> int:
+        my_dict=Counter(nums)
+        for a,b in my_dict.items():
+            if b>=2:
+                return a
+
+
+
+
+        
