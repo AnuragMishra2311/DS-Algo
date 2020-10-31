@@ -1,0 +1,50 @@
+Rearrange array in alternating positive & negative items with O(1) extra space
+
+Given an array of positive and negative numbers, arrange them in an alternate fashion such that every positive number is followed by negative 
+and vice-versa maintaining the order of appearance.Number of positive and negative numbers need not be equal. If there are more positive 
+numbers they appear at the end of the array. If there are more negative numbers, they too appear in the end of the array.
+
+Examples :
+
+Input:  arr[] = {1, 2, 3, -4, -1, 4}
+Output: arr[] = {-4, 1, -1, 2, 3, 4}
+
+Input:  arr[] = {-5, -2, 5, 2, 4, 7, 1, 8, 0, -8}
+output: arr[] = {-5, 5, -2, 2, -8, 4, 7, 1, 8, 0} 
+
+
+
+def func(ar):
+    
+    dont_proceed=False
+    count=0 # To track how many times outer loop is running (not required) I did it for analysis.
+    
+    for i in range(len(ar)):
+        for j in range(i,len(ar)): # Note the range 
+            if not i%2: # if i is even, then we should have -ve element at that position
+                if ar[j]<0: # First -ve element 
+                    ar.insert(i,ar.pop(j)) # delete that element from list and append it to the ith position.
+                    
+                    # Very important condition, if we reached end of array while seraching for -ve element that means it was last -ve element present in our list and no need to proceed further.
+                    if j==len(ar)-1:
+                        dont_proceed=True
+                    
+                    break 
+            else: #if i is odd, then we should have +ve element at that position
+                if ar[j]>=0:
+                    ar.insert(i,ar.pop(j))
+                    if j==len(ar)-1:
+                        dont_proceed=True
+                    break
+            
+        if dont_proceed:
+            break
+    
+    print(count)    
+    return ar
+
+print(func([-5, -2, 5, 2, 4, 7, 1, 8, 0, -8,-6]))
+
+Note : if we don't use dont_proceed condition then the loop will continue even if received our final array. By using dont_proceed condition it is made sure
+that loop will terminate without any extra iterations.
+            
