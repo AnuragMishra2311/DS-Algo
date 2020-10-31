@@ -12,7 +12,7 @@ Output: arr[] = {-4, 1, -1, 2, 3, 4}
 Input:  arr[] = {-5, -2, 5, 2, 4, 7, 1, 8, 0, -8}
 output: arr[] = {-5, 5, -2, 2, -8, 4, 7, 1, 8, 0} 
 
-
+***********************************************************************************************************************************************************************
 
 def func(ar):
     
@@ -45,6 +45,7 @@ def func(ar):
 
 print(func([-5, -2, 5, 2, 4, 7, 1, 8, 0, -8,-6]))
 
+***********************************************************************************************************************************************************************
 Note : if we don't use dont_proceed condition then the loop will continue even if received our final array. By using dont_proceed condition it is made sure
 that loop will terminate without any extra iterations.
             
