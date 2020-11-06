@@ -1,0 +1,28 @@
+Given a singly linked list, find if the linked list is circular or not. 
+A linked list is called circular if it not NULL terminated and all nodes are connected in the form of a cycle. An empty linked list is considered as circular.
+
+
+************************************************************************************************************************************************************************************
+
+
+bool isCircular(Node *head)
+{
+   // Your code here
+   if(head==NULL)
+   {
+       return true;
+   }
+   Node *save=head;
+   while(save->next!=NULL)
+   {
+       if(save->next==head)
+       {
+           return true;
+       }
+       save=save->next;
+   }
+   return false;
+}
+
+
+**********************************************************************************************************************************************************************************
