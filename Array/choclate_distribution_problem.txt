@@ -5,7 +5,8 @@ There are M students, the task is to distribute chocolate packets such that :
 
 Input:
 The first line of input contains an integer T, denoting the number of test cases. Then T test cases follow. Each test case consists of three lines. 
-The first line of each test case contains an integer N denoting the number of packets. Then next line contains N space separated values of the array A denoting the values of each packet. The third line of each test case contains an integer m denoting the no of students.
+The first line of each test case contains an integer N denoting the number of packets. Then next line contains N space separated values of the array A denoting
+the values of each packet. The third line of each test case contains an integer m denoting the no of students.
 
 Output:
 For each test case in a new line print the minimum difference.
