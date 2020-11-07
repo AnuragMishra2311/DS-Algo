@@ -29,6 +29,9 @@ Yes
 No
 
 
+Logic : Create a dictionary with keys as elements of first array (in this case i am using Counter to do the same) and then iterate through all elememts of 2nd array
+and if value for any key = 0, the 2nd array is not a subset of 1st array, otyherwise it is.
+
 ***********************************************************************************************************************************************************************
 
 #code
