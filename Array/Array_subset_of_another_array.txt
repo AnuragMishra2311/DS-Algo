@@ -1,0 +1,18 @@
+#code
+from collections import Counter
+number_of_test_cases=int(input())
+while number_of_test_cases>0:
+    flag=True
+    m,n=input().split()
+    arr1=list(map(int,input().split()))
+    arr2=list(map(int,input().split()))
+    dic_1=Counter(arr1)
+    for ele in arr2:
+        if dic_1[ele]==0:
+            print('No')
+            flag=False
+            break
+    if flag:
+        print('Yes')
+    
+    number_of_test_cases-=1
