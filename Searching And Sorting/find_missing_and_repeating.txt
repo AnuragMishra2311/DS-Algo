@@ -1,0 +1,10 @@
+    def findTwoElement( self,arr, n): 
+        # code here
+        repeated=missing=0
+        d1=Counter(arr)
+        for i in range(n+1):
+            if d1[i]==0:
+                missing=i
+            if d1[i]==2:
+                repeated=i
+        return [repeated,missing]
