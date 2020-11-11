@@ -1,0 +1,21 @@
+Given a singly linked list. The task is to find the length of the linked list, where length is defined as the number of nodes in the linked list.
+
+Recursive Approach
+
+
+int getCount(struct Node* head)
+{
+    int c;
+    if(head==NULL)
+    {
+        return 0;
+    }
+    
+    else
+    {
+        c=1+ getCount(head->next);
+        return c;
+    }
+
+
+}
