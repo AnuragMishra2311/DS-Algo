@@ -1,0 +1,29 @@
+#code
+t=int(input())
+while t>0:
+    n,x=input().split()
+    x=int(x)
+    arr=list(map(int,input().split()))
+    arr.sort()
+    found=False
+    
+    
+    for i in range(int(n)-2):
+        first=i+1
+        last=int(n)-1
+        
+        while first<last:
+            if (arr[first]+arr[last]+arr[i])>x:
+                last-=1
+            elif (arr[first]+arr[last]+arr[i])<x:
+                first+=1
+            elif arr[first]+arr[last]+arr[i]==x:
+                found=True
+                print("1")
+                print(arr[i],arr[first],arr[last])
+                break
+            
+    if not found:
+        print("0")
+    
+    t-=1
