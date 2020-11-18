@@ -1,0 +1,24 @@
+https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/seating-arrangement-1/description/
+
+
+Seating Arrangement
+
+******************************************************************************************************************************************************
+import math
+# Write your code here
+def func(n):
+    temp=13+( (math.ceil(n/12)-1)*24 )-n
+    if temp%6==1 or temp%6==0:
+        print(temp,'WS')
+    elif temp%6==2 or temp%6==5:
+        print(temp,'MS')
+    else:
+        print(temp,'AS')
+ 
+t=int(input())
+while t>0:
+    n=int(input())
+    func(n)
+    t-=1
+
+***************************************************************************************************************************************************
