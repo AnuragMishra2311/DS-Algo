@@ -1,0 +1,24 @@
+Given an array that represents elements of arithmetic progression in order. One element is missing in the progression, find the missing number.
+
+Examples:
+
+Input: arr[]  = {2, 4, 8, 10, 12, 14}
+Output: 6
+
+Input: arr[]  = {1, 6, 11, 16, 21, 31};
+Output: 26
+
+
+
+*********************************************************************************************************************************************************
+def missing_element_in_ap(arr,n):
+    sum_of_ap=(n+1)*(arr[0]+arr[n-1])/2
+    return sum_of_ap-sum(arr)
+    
+    
+    
+arr=list(map(int,input().split()))
+print(missing_element_in_ap(arr,len(arr)))
+
+
+*********************************************************************************************************************************************************
