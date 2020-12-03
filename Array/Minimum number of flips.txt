@@ -1,0 +1,42 @@
+Given a binary string, that is it contains only 0s and 1s. We need to make this string a sequence of alternate characters by flipping some of the bits, our goal is to minimize 
+the number of bits to be flipped.
+
+Examples:
+
+Input : str = “001”
+Output : 1
+Minimum number of flips required = 1
+We can flip 1st bit from 0 to 1 
+
+Input : str = “0001010111”
+Output : 2
+Minimum number of flips required = 2
+We can flip 2nd bit from 0 to 1 and 9th 
+bit from 1 to 0 to make alternate 
+string “0101010101”.
+
+
+
+t=int(input())
+while(t>0):
+    s=input()
+    
+    garbar_for_starting_with_1=garbar_for_starting_with_0=0
+    for i in range(len(s)): #Starting with 0
+        if i&1:#odd
+            if s[i]!='0':
+                garbar_for_starting_with_0+=1
+        else:
+            if s[i]!='1':
+                garbar_for_starting_with_0+=1
+                
+    for i in range(len(s)): #Starting with 1
+        if i&1:#odd
+            if s[i]!='1':
+                garbar_for_starting_with_1+=1
+        else:
+            if s[i]!='0':
+                garbar_for_starting_with_1+=1
+                
+    print(min(garbar_for_starting_with_0,garbar_for_starting_with_1))
+    t-=1
