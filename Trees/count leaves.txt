@@ -1,0 +1,26 @@
+Given a Binary Tree of size N , You have to count leaves in it. For example, there are two leaves in following tree
+
+        1
+     /    \
+   10     39
+   /
+  5
+
+
+
+int countLeaves(Node* root)
+{
+  // Your code here
+  int sum;
+  if(root==NULL)
+  {
+      return 0;
+  }
+  if(root->left==NULL && root->right==NULL)
+  {
+      return 1;
+  }
+  sum=countLeaves(root->left)+countLeaves(root->right);
+  return sum;
+  
+}
