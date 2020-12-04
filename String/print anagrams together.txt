@@ -1,0 +1,58 @@
+Given an array of strings, return all groups of strings that are anagrams.
+
+Example 1:
+
+Input:
+N = 5
+words[] = {act,god,cat,dog,tac}
+Output: 
+god dog
+act cat tac
+Explanation: There are 2 groups of
+anagrams god, dog make group 1.
+act, cat, tac make group 2. 
+
+
+
+from collections import Counter
+def Anagrams(words,n):
+    answer=[]
+    
+    while n>0:
+        j=1
+        found=0
+        temp=[]
+        d1=Counter(words[0])
+        
+        while j<n:
+            d2=Counter(words[j])
+            if d1==d2:
+                temp.append(words[j])
+                found=1
+                words.pop(j)
+                n-=1
+            j+=1
+        if found:
+            temp.append(words[0])
+            answer.append(temp)
+        l=len(words)
+        words.pop(0)
+        n-=1
+            
+    return answer
+
+
+
+
+if __name__ =='__main__':
+    t= int(input())
+    for tcs in range(t):
+        n= int(input())
+        words=input().split()
+        
+        ans=Anagrams(words,n)
+        
+        for grp in sorted(ans):
+            for word in grp:
+                print(word,end=' ')
+            print()
