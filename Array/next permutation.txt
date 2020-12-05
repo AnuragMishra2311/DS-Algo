@@ -1,0 +1,83 @@
+Implement the next permutation, which rearranges numbers into the numerically next greater permutation of numbers. If such arrangement is not possible, 
+it must be rearranged as the lowest possible order ie, sorted in an ascending order.
+
+For example:
+1,2,3 → 1,3,2
+3,2,1 → 1,2,3
+
+Input:
+The first line contains an integer T, depicting total number of test cases. Then following T lines contains an integer N depicting the size of array and next 
+line followed by the value of array.
+
+Output:
+Print the array of next permutation in a separate line.
+
+Example:
+Input:
+1
+6
+1 2 3 6 5 4
+
+Output:
+1 2 4 3 5 6
+
+
+***************************************************************************************************************************************************************
+#code
+
+def batao(n,arr):
+    '''
+    Logic : Start from RHS, find a number that is smaller than it's previous number.(let this number be
+    present at position j in array). 
+    
+    No need to change the array from [0,j), save this as say(temp)
+    Replace the jth element with smallest element from it's RHS that is greater than j. 
+    Sort all the remaining RHS elements and append it to temp.
+    
+    '''
+    
+    if n<=2:
+        return arr[::-1]
+        
+    store_house=[]
+    i=n-1
+    j=i-1
+    
+    while j>=0:
+        if arr[i]>arr[j]:
+            temp=arr[0:j] # the part of array that will remain as it is
+            store_house.append(arr[i])
+            store_house.append(arr[j])
+            break
+        else:
+            store_house.append(arr[i])
+        
+        i-=1
+        j-=1
+    replace=store_house[-1]
+    store_house.sort()
+    
+    for x in range(len(store_house)):
+        if store_house[x]>replace:
+            save=x
+            break
+            
+    temp.append(store_house[save])
+    store_house.pop(save)
+    temp.extend(store_house)
+    return temp
+
+
+t=int(input())
+while t>0:
+    n=int(input())
+    arr=list(map(int,input().split()))
+    ans=batao(n,arr)
+    for ele in ans:
+        print(ele,end=' ')
+    t-=1
+    print()
+
+
+
+***************************************************************************************************************************************************************
