@@ -1,0 +1,23 @@
+Median of two sorted arrays of same size
+
+There are 2 sorted arrays A and B of size n each. Write an algorithm to find the median of the array obtained after merging the above 2 arrays(i.e. array of length 2n)
+
+
+***************************************************************************************************************************************************************
+a1=list(map(int,input().split()))
+a2=list(map(int,input().split()))
+n=len(a1)
+k=n-1
+i=j=0
+while k>0:
+    if a1[i]>a2[j]:
+        j+=1
+    elif a2[j]>a1[i]:
+        i+=1
+    elif a1[i]==a2[j]:
+        i+=1
+    k-=1
+    
+print((a1[i]+a2[j])/2)
+
+***************************************************************************************************************************************************************
