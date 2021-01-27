@@ -1,0 +1,53 @@
+Given a permutation of first n natural numbers as an array and an integer k. Print the lexicographically largest permutation after at most k swaps.
+
+Input:
+The first line of input contains an integer T denoting the number of test cases. Each test case contains two integers n and k where n denotes the number of elements in the array a[]. Next line contains space separated n elements in the array a[].
+
+Output:
+Print space separated n integers which form the largest permutation after at most k swaps.
+
+Example:
+Input:
+2
+5 3
+4 5 2 1 3
+3 1
+2 1 3
+Output:
+5 4 3 2 1 
+3 1 2 
+
+
+
+********************************************************************************************************************************************************************
+
+def output(arr):
+    for ele in arr:
+        print(ele,end=' ')
+        
+        
+t=int(input())
+while t>0:
+    n,k=list(map(int,input().split()))
+    n=int(n)
+    k=int(k)
+    arr=list(map(int,input().split()))
+    
+    swap=0 # to count number of swaps
+    i=0
+    while swap<k and n>0: #if k>n then the condition n>0 wiil rescue us :))
+        if arr[arr.index(n)]==arr[i]: # no need to swap
+            pass
+        else:
+            arr[arr.index(n)]=arr[i] # swap the elements
+            arr[i]=n
+            swap+=1
+        n=n-1
+        i+=1
+    output(arr)
+    print()
+    t-=1
+
+
+
+********************************************************************************************************************************************************************
