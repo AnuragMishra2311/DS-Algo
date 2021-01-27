@@ -1,0 +1,24 @@
+def merge(arr1,arr2,n,m):
+    #code here
+    i=j=0
+    if max(m,n)==n:
+        while True:
+            try:
+                if arr2[i]>=arr1[j]:
+                    arr2.insert(i,arr1[j])
+                    j+=1
+                if arr2[i]<arr1[j]:
+                    i+=1
+            except:
+                return arr2
+                
+    else:
+        while True:
+            try:
+                if arr2[i]>=arr1[j]:
+                    arr2.insert(i,arr1[j])
+                    j+=1
+                if arr2[i]<arr1[j]:
+                    i+=1
+            except:
+                return arr2

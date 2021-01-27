@@ -1,0 +1,26 @@
+Ishika got stuck on an island. There is only one shop on this island and it is open on all days of the week except for Sunday. Consider following constraints:
+
+N – The maximum unit of food you can buy each day.
+S – Number of days you are required to survive.
+M – Unit of food required each day to survive.
+Currently, it’s Monday, and she needs to survive for the next S days.
+Find the minimum number of days on which you need to buy food from the shop so that she can survive the next S days, or determine that it isn’t possible to survive.
+
+Example 1:
+
+Input: S = 10, N = 16, M = 2
+Output: 2
+
+
+
+*********************************************************************************************************************************************************************
+
+    def minimumDays(self, S, N, M):
+        # code here
+        if M>=N:
+            return -1
+        if S>=7 and (M*7)/N>6:
+            return -1
+        return math.ceil(M*S/N)
+
+*********************************************************************************************************************************************************************
