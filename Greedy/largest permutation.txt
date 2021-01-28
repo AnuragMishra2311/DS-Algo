@@ -51,3 +51,52 @@ while t>0:
 
 
 ********************************************************************************************************************************************************************
+
+
+
+USING C++
+
+#include <iostream>
+#include <bits/stdc++.h> 
+using namespace std;
+
+int main() {
+	//code
+	int t,n,k,x;
+	
+	cin>>t;
+	while(t>0)
+	{
+	    int swap=0,j=0;
+	    vector<int> arr;
+	    
+    	cin>>n>>k;
+    
+    	for(int i=0;i<n;i++)
+    	{
+    	    cin>>x;
+    	    arr.push_back(x);
+    	}
+    	
+    	while(swap<k && n>0)
+    	{
+    	    auto it = find(arr.begin(), arr.end(), n)-arr.begin();
+    	    if(arr[it]!=arr[j])
+    	    {
+    	        arr[it]=arr[j];
+    	        arr[j]=n;
+    	        swap++;
+    	    }
+    	    n--;
+    	    j++;
+    	}
+    	
+    	for(int i=0;i<arr.size();i++)
+    	{
+    	    cout<<arr[i]<<" ";
+    	}
+    	cout<<endl;
+    	t--;
+	}
+	return 0;
+}
