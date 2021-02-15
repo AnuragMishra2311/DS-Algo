@@ -1,0 +1,44 @@
+Given an array of n positive integers and a number k. Find the minimum number of swaps required to bring all the numbers less than or equal to k together.
+
+Input : arr[ ] = {2, 1, 5, 6, 3} and K = 3
+Output : 1
+Explanation:
+To bring elements 2, 1, 3 together, swap element '5' with '3'
+such that final array will be- arr[] = {2, 1, 3, 6, 5}
+
+********************************************************************************************************************************************************************
+Sliding window approach
+
+
+def minSwap (arr, n, k) :    
+    number_of_elements_less_than_k=0
+
+    for ele in arr:
+        if ele<=k:
+            number_of_elements_less_than_k+=1
+            
+    swap=0
+    # for first window
+    print('Window is ',arr[0:number_of_elements_less_than_k])
+    for i in range(number_of_elements_less_than_k):
+        if arr[i]>k:
+            swap+=1
+    print('swap after first window is ',swap)       
+    min_swap=swap  
+    
+    for i in range(0,n-number_of_elements_less_than_k):
+        excluding=i
+        including=i+number_of_elements_less_than_k
+        print(arr[excluding+1:including+1])
+        if arr[including]>k:
+            swap+=1
+        if arr[excluding]>k:
+            swap-=1
+        print('swap is ',swap)    
+        if swap<min_swap:
+            min_swap=swap
+
+    return min_swap
+
+
+********************************************************************************************************************************************************************
