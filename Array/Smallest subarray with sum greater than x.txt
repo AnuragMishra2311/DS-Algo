@@ -1,0 +1,51 @@
+Given an array of integers (A[])  and a number x, find the smallest subarray with sum greater than the given value.
+
+Note: The answer always exists. It is guaranteed that x doesn't exceed the summation of a[i] (from 1 to N).
+
+Example 1:
+
+Input:
+A[] = {1, 4, 45, 6, 0, 19}
+x  =  51
+Output: 3
+Explanation:
+Minimum length subarray is 
+{4, 45, 6}
+
+
+
+
+*************************************************************************************************************************************************************************
+
+def sb( a, n, x):
+    # Your code goes here
+    first_window=0
+    sum_of_subarray=0
+    
+    for i in range(n): #loop to calculate size of first subarray.
+        sum_of_subarray+=a[i]
+        first_window+=1
+        if sum_of_subarray>x:
+            break
+
+    i=0 #set i=0 
+    j=first_window #index of last element of first window
+    minimum_subarray_size = first_window
+    
+    while j<n+1 and i<n:
+        if sum_of_subarray-a[i]>x: # we can remove ar[i] from subarray
+            sum_of_subarray-=a[i]
+            i+=1
+            minimum_subarray_size=min(minimum_subarray_size,j-i)
+        else:
+            try:
+              sum_of_subarray+=a[j]
+              j+=1
+              print('condition not satisfied ',sum_of_subarray,' value of i= ',i, ' j= ',j)
+            except:
+              break
+    return minimum_subarray_size
+
+
+
+*************************************************************************************************************************************************************************
