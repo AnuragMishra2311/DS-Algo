@@ -1,0 +1,41 @@
+Given an array of N distinct integers. The task is to write a program to check if this array is sorted and rotated counter-clockwise. 
+A sorted array is not considered as sorted and rotated, i.e., there should at least one rotation.
+
+
+Example: 
+ 
+Input : arr[] = { 3, 4, 5, 1, 2 }
+Output : YES
+The above array is sorted and rotated.
+Sorted array: {1, 2, 3, 4, 5}. 
+Rotating this sorted array clockwise 
+by 3 positions, we get: { 3, 4, 5, 1, 2}
+
+
+Logic: Find the first element where array starts decreasing, if not found return No.
+From this element onwards next element should be greater than or equal to previous element 
+and at the same time should be less than equal to first element of the array. 
+If all these conditions are satisfied then return YES else NO.
+
+*************************************************************************************************************************************************************************
+def Sorted_Rotated(arr,n):
+  decreasing=False
+  for i in range(n-1):
+    if arr[i]>arr[i+1] and arr[i+1]<=arr[0]:
+      decreasing=True
+      break
+
+  if not decreasing:
+    return 'NO'
+
+  index=i+1
+  for j in range(index,n-1):
+    if arr[j+1]>=arr[j] and arr[j+1]<=arr[0]:
+      pass
+    else:
+      return 'NO'
+  if decreasing:
+    return 'YES'
+
+
+*************************************************************************************************************************************************************************
