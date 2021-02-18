@@ -1,0 +1,33 @@
+Given a string A and a dictionary of n words B, find out if A can be segmented into a space-separated sequence of dictionary words. 
+
+Input:
+n = 12
+B = { "i", "like", "sam", "sung", "samsung", "mobile",
+"ice","cream", "icecream", "man", "go", "mango" }
+A = "ilike"
+Output: 1
+Explanation:The string can be segmented as "i like".
+
+
+***************************************************************************************************************************************************************************
+
+def wordBreak(line, dictionary):
+    # Complete this function
+    length=len(line)
+    covered=0 #variable to count number of letters in line got covered. If covered = length return true. 
+    i=0
+    j=0
+    while i<length:
+        j=i
+        while j<length:
+            if line[i:j+1] in dictionary:
+                covered+=j+1-i
+                #print(line[i:j+1],' covered ',covered)
+                i=j+1
+            
+            j+=1
+        i+=1
+    return covered==length
+
+
+***************************************************************************************************************************************************************************
