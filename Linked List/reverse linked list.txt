@@ -1,0 +1,13 @@
+struct Node* reverseList(struct Node *head)
+{
+    
+    struct Node *temp,*new_head=NULL;
+    while(head)
+    {
+        temp=head;
+        head=head->next;
+        temp->next=new_head;
+        new_head=temp;
+    }
+    return new_head;
+}
