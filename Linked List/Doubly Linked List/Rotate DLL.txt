@@ -1,0 +1,28 @@
+struct node*update(struct node*start,int p)
+{
+    //Add your code here
+    /* Logic : Traverse till we reach n+1th node,head will point to this node. Make previous 
+    pointer of head to null and next pointer of last broken node to null.
+    make save point to first node of broken node which need to be appended at last.Traverse 
+    till last node and append the nodes pointed by save to existing ones.*/
+
+    int count=0;
+    node *save=start;
+    while(count!=p)
+    {
+        start=start->next;        
+        count++;
+    }
+    
+    (start->prev)->next=NULL;
+    start->prev=NULL;
+    node *temp=start;
+    while(temp->next)
+    {
+        temp=temp->next;
+    }
+    temp->next=save;
+    save->prev=temp;
+    return start;
+    
+}
