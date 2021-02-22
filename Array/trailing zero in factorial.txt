@@ -1,0 +1,11 @@
+int trailingZeroes(int N)
+    {
+        // Write Your Code here
+        int counter;
+        while(N>0)
+        {
+            counter=counter+N/5;
+            N=N/5;
+        }
+        return counter;
+}
