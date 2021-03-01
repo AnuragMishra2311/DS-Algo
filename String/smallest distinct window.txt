@@ -1,0 +1,46 @@
+Given a string 's'. The task is to find the smallest window length that contains all the characters of the given string at least one time.
+For eg. A = “aabcbcdbca”, then the result would be 4 as of the smallest window will be “dbca”.
+
+Input : "AABBBCBBAC"
+Output : 3
+Explanation : Sub-string -> "BAC"
+
+
+
+*************************************************************************************************************************************************************************
+
+from collections import defaultdict
+
+def findSubString(strr):
+	
+	n = len(strr)
+	dist_count = len(set(strr))
+	
+	curr_count = defaultdict(lambda: 0)
+	count = 0
+	start = 0
+	min_len = n
+	
+
+	for j in range(n):
+		
+		if curr_count[strr[j]] == 0:
+			count += 1
+			
+		curr_count[strr[j]] += 1
+
+
+		if count == dist_count:
+			while curr_count[strr[start]] > 1:
+				curr_count[strr[start]] -= 1
+				start += 1
+				
+			len_window = j - start + 1
+			min_len=min(min_len,len_window)
+
+
+	return min_len
+
+
+
+*************************************************************************************************************************************************************************
