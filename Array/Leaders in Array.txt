@@ -1,0 +1,39 @@
+Given an array A of positive integers. Your task is to find the leaders in the array. An element of array is leader if it is greater than or equal to all the elements 
+to its right side. The rightmost element is always a leader. 
+
+
+Example 1:
+
+Input:
+n = 6
+A[] = {16,17,4,3,5,2}
+Output: 17 5 2
+
+
+*************************************************************************************************************************************************************************
+
+    def leaders(self, A, N):
+        # O(N^2)
+        answer=[]
+        for i in range(N):
+            include=True
+            for j in range(i+1,N):
+                if A[j]>A[i]:
+                    include=False
+                    break
+            if include:
+                answer.append(A[i])
+                
+        return answer
+        
+        # O(N)
+        max_tracker=0
+        for i in range(N-1,-1,-1):
+            if A[i]>=max_tracker:
+                max_tracker=A[i]
+                answer.insert(0,A[i])
+        return answer
+
+
+
+*************************************************************************************************************************************************************************
