@@ -1,0 +1,27 @@
+Given an unsorted linked list of N nodes. The task is to remove duplicate elements from this unsorted Linked List. 
+When a value appears in multiple nodes, the node which appeared first should be kept, all others duplicates are to be removed.   
+
+**********************************************************************************************************************************************************
+
+ Node * removeDuplicates( Node *head) 
+    {
+        unordered_set <int> s;
+        Node *prev=NULL,*current=head;
+        
+        while(current){
+            if(s.find(current->data)!=s.end()){
+                prev->next=current->next;
+                free(current);
+                current=prev->next;
+            }
+            else{
+                s.insert(current->data);
+                prev=current;
+                current=current->next;
+            }
+        }
+        return head;
+     
+}
+
+**********************************************************************************************************************************************************
