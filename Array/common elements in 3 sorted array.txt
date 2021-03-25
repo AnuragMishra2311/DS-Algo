@@ -1,0 +1,33 @@
+Given three arrays sorted in increasing order. Find the elements that are common in all three arrays.
+
+***************************************************************************************************************************************************************
+
+def commonElements (ar1,ar2,ar3, n1, n2, n3):
+    # your code here
+    i=j=k=0
+    ans=[]
+    prev=float('-inf')
+    while (i<n1 and j<n2 and k<n3):
+        
+        minimum=min(ar1[i],ar2[j],ar3[k])
+        if(ar1[i]==ar2[j] and ar2[j]==ar3[k]):
+            if ar1[i]>prev:    
+                ans.append(ar1[i])
+                prev=ar1[i]
+            i+=1
+            j+=1
+            k+=1
+              
+        try:
+            if minimum==ar1[i]:
+                i+=1
+            if minimum==ar2[j]:
+                j+=1
+            if minimum==ar3[k]:
+                k+=1
+        except:
+            break
+              
+    return ans
+
+***************************************************************************************************************************************************************
