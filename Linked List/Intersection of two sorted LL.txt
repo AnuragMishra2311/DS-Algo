@@ -1,0 +1,46 @@
+Given two lists sorted in increasing order, create a new list representing the intersection of the two lists. 
+The new list should be made with its own memory — the original lists should not be changed.
+
+***************************************************************************************************************************************************************
+
+
+Node* insert(Node* head,int data){
+    
+    Node *newptr=new Node(data);
+    if(head==NULL){
+        head=newptr;
+        return head;
+    }
+    else{
+    Node* temp=head;
+    
+    while(head->next){
+        head=head->next;
+    }
+    head->next=newptr;
+    
+    return temp;
+    }
+}
+
+Node* findIntersection(Node* head1, Node* head2)
+{
+    // Your Code Here
+    Node *head3=NULL,*temp=NULL;
+    
+    while(head1 && head2){
+        if(head1->data>head2->data){
+            head2=head2->next;
+        }
+        else if(head1->data<head2->data)
+            head1=head1->next;
+        else{
+            temp=insert(temp,head1->data);
+            head1=head1->next;
+            head2=head2->next;
+        }
+    }
+    return temp;
+}
+
+***************************************************************************************************************************************************************
