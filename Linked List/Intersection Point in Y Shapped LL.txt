@@ -1,0 +1,94 @@
+HASHING USED
+
+
+
+int intersectPoint(Node* head1, Node* head2)
+{
+    // Hash to store address of first list
+    unordered_set<Node*> s;
+    
+    while(head1){
+        s.insert(head1);
+        head1=head1->next;
+    }
+    
+    // Iterating through 2nd list
+	
+    while(head2){
+ 
+	//If current address exists in the hash, this is the intersection point
+        if(s.find(head2)!=s.end()){ 
+            return head2->data;
+        }
+        head2=head2->next;
+    }
+    return -1; 
+}
+
+
+
+******************************************************************************************************************************************************************
+
+//Function to calculate length of list
+
+int count(Node *head){
+    if(head==NULL){
+        return 0;
+    }
+    
+    else{
+        int x=1+count(head->next);
+        return x;
+    }
+}
+
+
+
+int intersectPoint(Node* head1, Node* head2)
+{
+    Node *temp1=head1,*temp2=head2;
+    int difference,length1,length2,tracker=0;
+    length1=count(temp1);
+    length2=count(temp2);
+    
+    difference=abs(length1-length2);
+    
+    // IF list 1 is big, then iterate upto difference nodes in LIST 1
+
+    if(length1>length2){
+        while(tracker<difference){
+            head1=head1->next;
+            tracker+=1;
+        }
+        while(head1){
+            if(head1==head2){
+                return head1->data;
+            }
+            head1=head1->next;
+            head2=head2->next;
+        }
+        
+    }
+
+// IF list 2 is big, then iterate upto difference nodes in LIST 2
+
+    
+    else{
+            while(tracker<difference){
+            head2=head2->next;
+            tracker+=1;
+        }
+        while(head1){
+            if(head1==head2){
+                return head1->data;
+            }
+            head1=head1->next;
+            head2=head2->next;
+        }
+    }
+    
+    
+    
+    return -1;
+    
+}
