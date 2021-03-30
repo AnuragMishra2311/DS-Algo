@@ -1,0 +1,61 @@
+Given a link list of size N, modify the list such that all the even numbers appear before all the odd numbers in the modified list. 
+The order of appearance of numbers within each segregation should be same as that in the original list.
+
+
+Link List = 
+17 -> 15 -> 8 -> 9 -> 2 -> 4 -> 6 -> NULL
+
+Output: 8 2 4 6 17 15 9
+
+
+
+*****************************************************************************************************************************************************************************
+
+Node* insert(Node *head,int val){
+    Node *temp=head;
+    Node *newptr=new Node(val);
+    if(head==NULL){
+        head=newptr;
+        return head;
+    }
+    while(head->next){
+        head=head->next;
+    }
+    head->next=newptr;
+    return temp;
+}
+
+
+Node* divide(int N, Node *head){
+        Node *result,*even_head=NULL,*odd_head=NULL;
+        
+        //Iterate through original list
+        while(head){
+            if(head->data&1){ //odd,insert it into odd_list
+                odd_head=insert(odd_head,head->data);
+            }
+            else{ //even, insert it into even_list
+                even_head=insert(even_head,head->data);
+            }
+            head=head->next;
+        }
+        
+        Node *temp=even_head;
+        
+        //If even_node is not empty, traverse through it and link the last node to first node of odd_list
+        if(even_head){
+        while(even_head->next){
+            even_head=even_head->next;
+        }
+        even_head->next=odd_head;
+        return temp;
+        }
+        
+        //else return odd list
+        else{
+            return odd_head;
+        }
+    }
+
+
+*****************************************************************************************************************************************************************************
