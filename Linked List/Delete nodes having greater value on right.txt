@@ -1,0 +1,53 @@
+Given a singly linked list, remove all the nodes which have a greater value on its following nodes.
+
+
+LinkedList = 12->15->10->11->5->6->2->3
+Output: 15 11 6 3
+
+
+***********************************************************************************************************************************************************
+
+Node* reverse(Node *head){
+    Node *prev=NULL,*next=NULL;
+    while(head){
+        next=head->next;
+        head->next=prev;
+        prev=head;
+        head=next;
+        }
+    return prev;
+}
+
+
+
+Node *compute(Node *head)
+    {
+        // your code goes here
+        Node *current,*prev,*final_head;
+        current=reverse(head);
+        
+        Node *temp=current;
+        int current_max=current->data;
+        prev=current;
+        current=current->next;
+        while(current){
+            if(current->data>=current_max){
+                current_max=current->data;
+                prev=current;
+                current=current->next;
+            }
+            else{
+                prev->next=current->next;
+                free(current);
+                current=prev->next;
+            }
+            
+        }
+        
+        final_head=reverse(temp);
+        return final_head;
+    }
+
+
+
+***********************************************************************************************************************************************************
