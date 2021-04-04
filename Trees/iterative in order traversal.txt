@@ -1,0 +1,20 @@
+vector<int> inOrder(Node* root)
+    {
+      // Your code here
+      vector<int> ans;
+      
+      stack<Node*> nodestack;
+      Node *current=root;
+      
+      while(current!=NULL || nodestack.empty()==false){
+          while(current){
+              nodestack.push(current);
+              current=current->left;
+          }
+          current=nodestack.top();
+          ans.push_back(current->data);
+          nodestack.pop();
+          current=current->right;
+      }
+      return ans;
+    }
