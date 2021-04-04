@@ -1,0 +1,35 @@
+Given a string str and another string patt. Find the character in patt that is present at the minimum index in str. 
+If no character of patt is present in str then print ‘No character present’.
+
+Example 1:
+
+Input:
+str = geeksforgeeks
+patt = set
+Output: e
+Explanation: e is the character which is
+present in given patt "geeksforgeeks"
+and is first found in str "set".
+
+**************************************************************************************************************************************************
+
+int minIndexChar(string str, string patt)
+    {
+        // Your code here
+        int i;
+        unordered_map<char,int> mp;
+        
+        for(i=0;i<patt.size();i++){
+            mp[patt[i]]+=1;
+        }
+        
+        for(i=0;i<str.size();i++){
+            if(mp[str[i]]!=0){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
+*************************************************************************************************************************************************
