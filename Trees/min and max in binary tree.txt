@@ -1,0 +1,28 @@
+int findMax(struct node* root)
+{
+// Your code goes here
+    if(root!=NULL){
+        return max(max(findMax(root->left),findMax(root->right)),root->data);
+    }
+    else{
+        return INT_MIN;
+    }
+}
+
+
+
+**************************************************************************************************************************************
+
+
+
+// Returns minimum value in a given Binary Tree
+int findMin(struct node* root)
+{
+// Your code goes here
+    if(root!=NULL){
+        return min(min(findMin(root->left),findMin(root->right)),root->data);
+    }
+    else{
+        return INT_MAX;
+    }
+}
