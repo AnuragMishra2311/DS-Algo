@@ -1,0 +1,16 @@
+void helper(Node *root,vector<int> &answer)
+{
+    if(root){
+        answer.push_back(root->data);
+        helper(root->left,answer);
+        helper(root->right,answer);
+    }
+}
+
+vector <int> preorder(Node* root)
+{
+    vector<int> answer;
+    helper(root,answer);
+    return answer;
+  
+}
