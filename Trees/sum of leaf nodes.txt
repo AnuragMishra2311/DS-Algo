@@ -1,0 +1,12 @@
+int sumLeaf(Node* root)
+{
+    // Code here
+    if(root){
+        if(root->left==root->right){
+            return root->data;
+        }
+        else{
+            return sumLeaf(root->left)+sumLeaf(root->right);
+        }
+    }
+}
