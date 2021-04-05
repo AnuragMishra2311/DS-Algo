@@ -1,0 +1,12 @@
+int countNonLeafNodes(Node* root)
+{
+    // Code here
+    if(root){
+        if(root->left==root->right){ // IF root->left==root->right==NULL
+            return 0;
+        }
+        else{
+            return 1+countNonLeafNodes(root->left)+countNonLeafNodes(root->right);
+        }
+    }
+}
