@@ -1,0 +1,17 @@
+void helper(Node *root,vector<int> &answer)
+{
+    if(root){
+        
+        helper(root->left,answer);
+        helper(root->right,answer);
+        answer.push_back(root->data);
+    }
+}
+
+vector <int> postOrder(Node* root)
+{
+    vector<int> answer;
+    helper(root,answer);
+    return answer;
+  
+}
