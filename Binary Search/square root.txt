@@ -1,0 +1,30 @@
+Given an integer x, find it’s square root. If x is not a perfect square, then return floor(√x).
+
+
+int squareroot(int x){
+    
+    int low=1,high=x,mid;
+    
+    while(high>=low){
+        
+        mid=(high+low)/2;
+        
+        if( (mid*mid)>x){
+            high=mid-1;
+        }
+        
+        else if((mid*mid)<x){
+            
+            if(((mid+1)*(mid+1))>x)
+            return mid;
+            
+            else{
+                low=mid+1;
+            }
+        }
+        
+        else{
+            return mid;
+        }
+    }
+}
