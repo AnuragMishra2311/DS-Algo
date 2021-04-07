@@ -1,0 +1,23 @@
+A peak element in an array is the one that is not smaller than its neighbours.
+Given an array of size N, find the index of any one of its peak elements.
+ 
+
+
+
+int peakElement(int arr[], int n)
+    {
+       // Your code here
+     int high=n-1,low=0,mid;
+     while(high>=low){
+         mid=(high+low)/2;
+         if( (mid==0||arr[mid-1]<=arr[mid]) && (mid==n-1 || arr[mid]>=arr[mid+1])){
+             return mid;
+         }
+         else if(arr[mid-1]>=arr[mid]){
+             high=mid-1;
+         }
+         else{
+             low=mid+1;
+         }
+     }
+    }
