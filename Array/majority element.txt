@@ -1,0 +1,38 @@
+Given an array A of N elements. Find the majority element in the array. A majority element in an array A of size N is an element that appears more than N/2 times in the array.
+
+N = 5 
+A[] = {3,1,3,3,2} 
+Output:
+3
+
+********************************************************************************************************************************************
+
+int majorityElement(int a[], int size)
+{
+    int count=1,res=0,i,tracker=0;
+    
+    //Part 1: To find the potential majority element
+    for(i=1;i<size;i++){
+        if(a[res]==a[i])
+            count+=1;
+        else
+            count-=1;
+        if(count==0){
+            res=i;
+            count=1;
+        }
+    }
+    
+    // Part 2: To check whether the element returned by part 1 is actually majority or not.
+    for(i=0;i<size;i++){
+        if(a[res]==a[i]){
+            tracker+=1;
+        }
+    }
+    if(tracker>size/2)
+        return a[res];
+    return -1;
+}
+
+
+********************************************************************************************************************************************
