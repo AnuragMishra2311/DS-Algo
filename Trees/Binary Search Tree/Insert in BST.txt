@@ -1,3 +1,5 @@
+Recursion 
+
 Node* insert(Node* root, int key)
 {
     // Your code here
@@ -10,6 +12,39 @@ Node* insert(Node* root, int key)
     }
     else if(root->data<key){
         root->right=insert(root->right,key);
+    }
+    return root;
+}
+
+
+**********************************************************************
+Iterative Approach
+
+
+Node* insert(Node* root, int key)
+{
+    Node *parent=NULL,*current=root,*newptr;
+    if(root==NULL){
+        newptr=new Node(x);
+        return newptr;
+    }
+    while(current!=NULL){
+        parent=current;
+        if(current->data>x){
+            current=current->left;
+        }
+        else if(current->data<x){
+            current=current->right;
+        }
+        else{
+            return root;
+        }
+    }
+    if(parent->data>x){
+        parent->left=new Node(x);
+    }
+    if(parent->data<x){
+        parent->right=new Node(x);
     }
     return root;
 }
