@@ -1,0 +1,46 @@
+// Function to get successor of node, when it has two childs 
+
+Node *getnext(Node *root){
+    Node *current=root->right;
+    while(current && current->left){
+        current=current->left;
+    }
+    return current;
+}
+
+
+
+
+
+// Return the root of the modified BST after deleting the node with value X
+Node *deleteNode(Node *root,  int x)
+{
+    // your code goes here
+    if(root==NULL){
+        return NULL;
+    }
+    if(root->data>x){
+        root->left=deleteNode(root->left,x);
+    }
+    else if(root->data>x){
+        root->right=deleteNode(root->right,x);
+    }
+    else if(root->data==x){
+        if(root->left==NULL){
+            Node *temp=root->right;
+            delete root;
+            return temp;
+        }
+        else if(root->right==NULL){
+            Node *temp=root->left;
+            delete root;
+            return temp;
+        }
+        else{
+            Node *temp=getnext(root);
+            root->data=temp->data;
+            root->right=deleteNode(root->right,temp->data);
+        }
+    }
+    return root;
+}
