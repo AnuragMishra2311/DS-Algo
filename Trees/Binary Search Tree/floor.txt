@@ -1,0 +1,17 @@
+Node *floor(Node* root, int key)
+{
+  Node *ans=NULL;
+  while(root){
+    if(root->data==key){
+      return root->data;
+  }
+    else if(root->data>key){
+      root=root->left;
+    }
+    else{
+      ans=root;
+      root=root->right;
+    }
+  }
+  return ans;
+}
