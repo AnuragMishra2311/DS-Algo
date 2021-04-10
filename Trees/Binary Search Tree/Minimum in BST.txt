@@ -1,0 +1,9 @@
+int minValue(Node* root)
+{
+    // Code here
+    Node *current=root;
+    while(current && current->left){
+        current=current->left;
+    }
+    return current->data;
+}
