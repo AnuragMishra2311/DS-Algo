@@ -1,0 +1,17 @@
+Node *ceil(Node* root, int key)
+{
+  Node *ans=NULL;
+  while(root){
+    if(root->data==key){
+      return root;
+  }
+    else if(root->data<key){
+      root=root->right;
+    }
+    else{
+      ans=root;
+      root=root->left;
+    }
+  }
+  return ans;
+}
