@@ -1,0 +1,40 @@
+Given two strings a and b. The task is to find if the string 'b' can be obtained by rotating another string 'a' by exactly 2 places.
+
+Example 1:
+
+Input:
+a = amazon
+b = azonam
+Output: 1
+Explanation: amazon can be rotated anti
+clockwise by two places, which will make
+it as azonam.
+
+
+******************************************************************************************************************************************
+
+def isRotated(str1, str2):
+
+    if(len(str1)!=len(str2)):
+        return False
+      
+    if str(str1+str1[0:2])[2:]==str2:
+        return True
+        
+    if(str(str1[-1:-3:-1])+str1)[0:len(str1)]==str2:
+        return True
+      
+    return False
+
+# Driver code
+if __name__ == "__main__":
+	
+	str1 = "geeks"
+	str2 = "skgee"
+if isRotated(str1, str2):
+	print("Yes")
+else:
+	print("No")
+
+
+******************************************************************************************************************************************
