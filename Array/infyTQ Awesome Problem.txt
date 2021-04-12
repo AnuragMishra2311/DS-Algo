@@ -1,0 +1,101 @@
+There is a unique ATM in Wonderland. Imagine this ATM as an array of numbers. You can withdraw cash only from either ends of the array. 
+Sarah wants to withdraw X amount of cash from the ATM. What is the minimum number of withdrawals Sarah would need to accumulate X amount 
+of cash. If it is not possible for Sarah to withdraw X amount, return -1. 
+
+Input Format 
+
+The first line contains an integer, N, denoting the number of elements in ATM. 
+Each line i of the N subsequent lines (where 0 <= i < N) contains an integer describing the cash in the ATM. 
+The next line contains an integer, X, denoting the total amount to withdraw. 
+Constraints 
+
+1 <= N <= 10^5 
+1 <= ATM [i] <= 10^5 
+1 <= X <= 10^5 
+Sample Test Cases
+
+Sample Input
+2
+[1,1]
+3 
+Sample Output
+-1 
+Explanation
+The total amount of cash in the ATM is 2, hence Sarah cannot withdraw an amount of 3.
+
+8
+[1, 1, 1, 1, 1, 3, 2, 2]
+5
+Sample output : 3
+Explanation: 
+1+2+2=5 
+In 3 withdrawal she can withdraw Rs 5.
+
+
+
+
+LOGIC: Find the largest subarray with sum = (Total sum - X) and then the answer becomes (array length - subarray length)
+
+
+*************************************************************************************************************************************************************************
+
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+int lenOfLongSubarr(vector<int>A,  int N, int K) 
+{ 
+        // Complete the function
+        int maximum=INT_MIN;
+        int i=0,j=0,sum=0;
+        while(j<N)
+        {
+            sum+=A[j];
+            j+=1;
+            
+            if(sum==K){
+                maximum=max(maximum,j-i);
+            }
+            if(sum>K){
+                while(1 && i<N){
+                    sum-=A[i];
+                    i+=1;
+                    if(sum<K)
+                    break;
+                }
+            }
+        }
+    if(maximum==INT_MIN)
+    return -1;
+    return maximum;
+
+}
+
+int paisa(vector<int>ar,int n,int X){
+    int sum;
+    sum=accumulate(ar.begin(),ar.end(),0);
+    if(X>sum){
+        return -1;
+    }
+    return n-lenOfLongSubarr(ar,n,sum-X);
+    
+}
+
+int main()
+{
+    int n,money,ans,ele,sum=0;
+    cin>>n;
+    vector<int> ar;
+    for(int i=0;i<n;i++){
+        cin>>ele;
+        ar.push_back(ele);
+    }
+    cout<<"Enter money you want to withdraw : ";
+    cin>>money;
+    cout<<paisa(ar,n,money);
+    return 0;
+}
+
+
+
+*************************************************************************************************************************************************************************
