@@ -1,0 +1,43 @@
+Given an array of integers, find the closest (not considering distance, but value) greater or same value on left of every element. 
+If an element has no greater or same value on the left side, print -1.
+
+Examples:
+
+Input : arr[] = {10, 5, 11, 6, 20, 12}
+Output : -1, 10, -1, 10, -1, 20
+First element has nothing on left side, so answer for first is -1.
+Second element 5 has 10 on left, so the answer is 10.
+Third element 11 has nothing greater or the same, so the answer is -1.
+Fourth element 6 has 10 as value wise closes, so the answer is 10
+Similarly we get values for fifth and sixth elements.
+
+Input : arr[] = {10, 5, 11, 10, 20, 12}
+Output : -1, 10, -1, 10, -1, 20
+
+
+************************************************************************************************************************************
+
+
+vector<int> printPrevGreater(int arr[], int n)
+{
+    set<int> s;
+    vector<int>ans;
+	
+    for (int i = 0; i < n; i++) {
+  
+        // First search in set
+        auto it = s.lower_bound(arr[i]);
+        if (it == s.end()) // If no greater found
+        ans.push_back(-1);
+        else
+            ans.push_back(*it);
+  
+        // Then insert
+        s.insert(arr[i]);
+    }
+
+    return ans;
+}
+
+
+************************************************************************************************************************************
