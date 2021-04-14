@@ -1,0 +1,16 @@
+bool helper(Node* root,int low,int high){
+    if(root==NULL){
+        return true;
+    }
+    else{
+        return (root->data>low && root->data<high && 
+        helper(root->left,low,root->data) && 
+        helper(root->right,root->data,high) );
+    }
+}
+
+
+bool isBST(Node* root)
+{
+    return helper(root,INT_MIN,INT_MAX);
+}
