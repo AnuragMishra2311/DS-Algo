@@ -1,0 +1,48 @@
+Given two strings s1 and s2. Modify both the strings such that all the common characters of s1 and s2 are to be removed 
+and the uncommon characters of s1 and s2 are to be concatenated.
+Note: If all characters are removed print -1.
+
+Input:
+s1 = aacdb
+s2 = gafd
+Output: cbgf
+Explanation: The common characters of s1
+and s2 are: a, d. The uncommon characters
+of s1 and s2 are c, b, g and f. Thus the
+modified string with uncommon characters
+concatenated is cbgf.
+
+
+******************************************************************************************************************************************
+
+string concatenatedString(string s1, string s2) 
+    { 
+        // Your code here
+        unordered_map<char,int>mp;
+        string ans="";
+        
+        for(int i=0;i<s2.length();i++){
+            mp[s2[i]]+=1;
+        }
+        
+        for(int i=0;i<s1.length();i++){
+            if(!mp[s1[i]]){
+                ans+=s1[i];
+            }
+            else{
+                mp[s1[i]]=INT_MIN;
+            }
+        }
+        for(int i=0;i<s2.length();i++){
+            if(mp[s2[i]]>0){
+                ans+=s2[i];
+            }
+        }
+        if(ans.length())
+            return ans;
+        else
+            return "-1";
+}
+
+
+******************************************************************************************************************************************
