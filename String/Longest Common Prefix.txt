@@ -1,0 +1,46 @@
+Given a array of N strings, find the longest common prefix among all strings present in the array.
+
+Example 1:
+
+Input:
+N = 4
+arr[] = {geeksforgeeks, geeks, geek,
+         geezer}
+Output: gee
+Explanation: "gee" is the longest common
+prefix in all the given strings.
+
+
+
+************************************************************************************************************************************
+
+
+string longestCommonPrefix (string arr[], int N)
+    {
+        // your code here
+        int ans=INT_MAX,count=0;
+        string first=arr[0];
+        
+        for(int i=1;i<N;i++){
+            string current=arr[i];
+            for(int j=0;j<current.size()&& j<first.size();j++){
+                if(current[j]!=first[j]){
+                    break;
+                }
+                else{
+                    count+=1;
+                }
+            }
+            ans=min(ans,count);
+            count=0;
+        }
+        if(ans==0)
+            return "-1";
+        else{
+            string final=first.substr(0,ans);
+            return final;
+        }
+}
+
+
+************************************************************************************************************************************
