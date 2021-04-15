@@ -1,0 +1,55 @@
+Given a word pat and a text txt. Return the count of the occurences of anagrams of the word in the text.
+
+Example 1:
+
+Input:
+txt = forxxorfxdofr
+pat = for
+Output: 3
+Explanation: for, orf and ofr appears
+in the txt, hence answer is 3.
+
+
+*****************************************************************************************************************************************
+
+	
+bool is_match(int arr1[],int arr2[]){
+    for(int i=0;i<256;i++){
+        if(arr1[i]!=arr2[i]){
+            return false;
+        }
+    }
+    return true;
+}
+
+
+
+int search(string pat, string txt) {
+	    
+	    int pat_track[256]={0},text_track[256]={0}; //To keep track of frequencies of characters in pat and txt.
+	    int count=0; 
+	    
+	    //for the first window
+	    for(int i=0;i<pat.size();i++){
+	        pat_track[pat[i]]+=1;
+	        text_track[txt[i]]+=1;
+	    }
+	    
+	    if(is_match(pat_track,text_track))
+	    count+=1;
+	    
+	    //For rest of window
+	    for(int i=1;i<=txt.size()-pat.size();i++){
+	        text_track[txt[i-1]]-=1; //Remove first character from lat window
+	        int ending_position=i+pat.size()-1; // Iclude last character of current window
+	        text_track[txt[ending_position]]+=1; 
+	        if(is_match(pat_track,text_track)){  //check for match
+	            count+=1;
+	        }
+	    }
+	    // code here
+	    return count;
+}
+
+
+*****************************************************************************************************************************************
