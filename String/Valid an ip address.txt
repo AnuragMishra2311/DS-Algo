@@ -1,0 +1,49 @@
+Write a program to Validate an IPv4 Address. According to Wikipedia, IPv4 addresses are canonically represented in dot-decimal notation, 
+which consists of four decimal numbers, each ranging from 0 to 255, separated by dots, e.g., 172.16.254.1 . 
+The generalized form of an IPv4 address is (0-255).(0-255).(0-255).(0-255). 
+Here we are considering numbers only from 0 to 255 and any additional leading zeroes will be considered invalid.
+
+
+Input:
+ip = 222.111.111.111
+Output: 1
+
+
+Input:
+ip = 00.00.00.00
+Output: 0
+
+
+****************************************************************************************************************************************
+
+def isValid(s):
+    
+    ip_converted_to_list=s.split(".") # split ip into 4 elements
+    
+    if len(ip_converted_to_list)!=4: # if length!=4 return 0
+        return 0
+        
+    
+    for i in ip_converted_to_list:  
+        """ 
+        Note: conditions checked in following if condition
+        
+        1. len of i should be bw 1 and 3 coz that's what we want for number 0(len=1) to 255(len=3).
+        2. i should be numeric not an alphabet, for this purpose isdecimal() is used.
+        3. consider case where ip is 00.00.00.00 In such cases first 2 condition are satisfied. 
+           But still it's not an valid ip address coz we have leading zeros in them, 
+           to avoid that we have ->>> len(str(int(i)))==len(i)
+        4. number shld be greater than 0
+        5. number shld be <= 255
+        
+        """
+        
+        if 1<=len(i) and len(i)<=3 and i.isdecimal() and len(str(int(i)))==len(i) and 0<=int(i) and int(i)<=255:
+            pass # if all conditions are valid, do nothing
+        else:
+            return 0 # if any 1 condition is not valid return 0
+            
+    return 1  # program will reach here only if we have valid ip, so return 1.
+
+
+****************************************************************************************************************************************
