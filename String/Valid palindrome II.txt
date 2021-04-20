@@ -1,0 +1,46 @@
+Given a non-empty string s, you may delete at most one character. Judge whether you can make it a palindrome.
+
+
+Input: "abca"
+Output: True
+Explanation: You could delete the character 'c'.
+
+
+
+*************************************************************************************************************************************************
+
+bool IsPalindrome(string s){
+    int i,j,n=s.size();
+    for(i=0,j=n-1;i<n/2;i++,j--){
+        if(s[i]!=s[j]){
+            return false;
+        }
+    }
+    return true;
+}
+
+
+bool validPalindrome(string s) 
+{
+        int i,j,n=s.size();
+        for(i=0,j=n-1;i<n/2;i++,j--){
+            if(s[i]!=s[j]){
+                break;
+                cout<<i<<" space "<<j<<endl;
+            }
+        }
+        if(i==n/2){
+            return true;
+        }
+        else{
+            if(Ispalindrome(s.substr(i+1,n-1-(2*i)))||Ispalindrome(s.substr(i,n-1-(2*i)))){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+}
+
+
+*************************************************************************************************************************************************
