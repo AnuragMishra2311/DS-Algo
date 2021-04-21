@@ -29,12 +29,9 @@ int findFloor(vector<long long> ar, long long n, long long x){
         while(start<=end){
         
             mid=(start+end)/2;
-            if(ar[mid]==x){
-                return mid;
-            }
             
-            else if(ar[mid-1]<x && ar[mid+1]>x){
-              return mid;
+            if(ar[mid]==x||mid==0||(ar[mid-1]<x && ar[mid+1]>x)){
+                return mid;
             }
             
             else if(ar[mid]>x){
