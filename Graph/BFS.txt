@@ -1,0 +1,27 @@
+vector<int>bfsOfGraph(int V, vector<int> adj[])
+{
+	    // Adj list representation
+	    
+	    int visited[V]={0}; //visited array to ignore repaeted entries
+	    vector<int>ans;
+	    queue<int>q;
+	    
+	    q.push(0);
+	    visited[0]=1;
+	    
+	    while(q.empty()!=true)
+	    {
+	        int top=q.front();
+	        q.pop();
+	        ans.push_back(top);
+	        for(int x:adj[top])
+	        {
+	            if(visited[x]==0)
+	            {
+	                visited[x]=1;
+	                q.push(x);
+	            }
+	        }
+	    }
+	    return ans;
+}
