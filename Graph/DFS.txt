@@ -1,0 +1,28 @@
+void dfsOfGraph(vector<int> adj[],int visited[],vector<int>&ans,int s)
+{
+    if(visited[s]!=1)
+    {
+        ans.push_back(s);
+        visited[s]=1;
+    }
+    for(auto x:adj[s])
+    {
+        if(visited[x]!=1)
+        {
+            dfsOfGraph(adj,visited,ans,x);
+        }
+    }
+}
+
+
+
+vector<int>helper(int V, vector<int> adj[])
+{
+    // Code here
+    int visited[V]={0};
+    vector<int>ans;
+    helper(adj,visited,ans,0);
+    return ans;
+}
+
+
