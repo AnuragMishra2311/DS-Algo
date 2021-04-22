@@ -1,0 +1,42 @@
+Given a string consisting of lowercase english alphabets, reverse only the vowels present in it and print the resulting string.
+
+
+Input: 
+S = "practice"
+Output: prectica
+Explanation: The vowels are a, e
+Reverse of these is e, a.
+
+
+********************************************************************************************************************************
+
+	string modify (string s)
+        {
+            //code here.
+            unordered_set<char>s1={'a','e','i','o','u'};
+            
+            int i=0,j=s.size()-1;
+            while(j>i)
+            {
+                
+                if(s1.find(s[i])==s1.end())
+                {
+                    i+=1;
+                }
+                if(s1.find(s[j])==s1.end())
+                {
+                    j-=1;
+                }
+                if(s1.find(s[i])!=s1.end() && s1.find(s[j])!=s1.end())
+                {
+                    char temp=s[i];
+                    s[i]=s[j];
+                    s[j]=temp;
+                    i+=1;
+                    j-=1;
+                }
+            }
+            return s;
+	}
+
+**********************************************************************************************************************************
