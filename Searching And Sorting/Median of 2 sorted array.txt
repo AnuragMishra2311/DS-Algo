@@ -1,0 +1,67 @@
+//Function to get kth element in two sorted array
+
+double kthElement(vector<int> arr1, vector<int> arr2,int k)
+{
+    int n=arr1.size(),m=arr2.size(),i=0,j=0,count=0;
+    while(i<n && j<m)
+    {
+            
+        if(arr1[i]>=arr2[j])
+        {
+            count+=1;
+            if(count==k)
+            return arr2[j];
+            j+=1;
+        }
+        else
+        {
+            count+=1;
+            if(count==k)
+            return arr1[i];
+            i+=1;
+        }
+
+    }
+        
+    while(i<n)
+    {
+        count+=1;
+        if(count==k)
+        {
+            return arr1[i];
+        }
+        i+=1;
+            
+    }
+        
+    while(j<m)
+    {
+        count+=1;
+        if(count==k)
+        {
+            return arr2[j];
+        }
+        j+=1;
+            
+    }
+        
+}
+
+
+
+
+// Driver Function
+
+double MedianOfArrays(vector<int>& array1, vector<int>& array2)
+{
+    // Your code goes here
+    int n=array1.size(),m=array2.size();
+    if((n+m)&1)
+    {
+        return kthElement(array1,array2,(m+n+1)/2);
+    }
+    else
+    {
+        return (kthElement(array1,array2,(m+n)/2)+kthElement(array1,array2,((m+n)/2)+1))/2;
+    }
+}
