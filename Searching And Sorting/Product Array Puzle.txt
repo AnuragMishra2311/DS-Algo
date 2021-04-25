@@ -1,0 +1,79 @@
+Given an array nums[] of size n, construct a Product Array P (of same size n) such that P[i] is equal to the product of all the elements of nums except nums[i].
+
+ 
+
+Example 1:
+
+Input:
+n = 5
+nums[] = {10, 3, 5, 6, 2}
+Output:
+180 600 360 300 900
+Explanation: 
+For i=0, P[i] = 3*5*6*2 = 180.
+For i=1, P[i] = 10*5*6*2 = 600.
+For i=2, P[i] = 10*3*6*2 = 360.
+For i=3, P[i] = 10*3*5*2 = 300.
+For i=4, P[i] = 10*3*5*6 = 900.    
+
+
+
+Input:
+n = 2
+nums[] = {12,0}
+Output:
+0 12
+
+
+**************************************************************************************************************************************************************
+
+
+    vector<long long int> productExceptSelf(vector<long long int>& nums, int n) 
+    {
+        long long int pdt=1;
+        int zero_count=0,zero_index;
+        vector<long long int>ans(n,0);
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[i])
+            {
+                pdt*=nums[i];
+            }
+            else
+	    {
+                zero_count+=1;
+                zero_index=i;
+                if(zero==2) //If we have have 2 or more zero then entire ans will 0. 
+                {
+                    return ans;
+                }
+            }
+        }
+        
+        if(zero_count==1) //Case when we have 1 zero, except at that index all element will be zero.
+        {
+            ans[zero_index]=pdt;
+            return ans;
+        }
+        
+        //When we don't have any zero.
+        
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[i])
+            {
+                ans[i]=(pdt/nums[i]);
+            }
+            else
+            {
+                ans.push_back(0);
+            }
+        }
+	return ans;
+       
+        //code here        
+    }
+
+
+
+**************************************************************************************************************************************************************
