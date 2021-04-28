@@ -1,0 +1,37 @@
+A step array is an array of integer where each element has a difference of at most k with its neighbor. 
+Given a key x, we need to find the index value of k if multiple elements exist, return the first occurrence of the key.
+
+
+Example 1:
+
+â€‹Input : arr[ ] = {4, 5, 6, 7, 6}, K = 1 
+        and X = 6
+Output : 2
+Explanation:
+In an array arr 6 is present at index 2.
+So, return 2.
+
+
+https://practice.geeksforgeeks.org/problems/searching-in-an-array-where-adjacent-differ-by-at-most-k0456/1
+
+****************************************************************************************************************************
+
+
+int search(int arr[], int n, int x, int k)
+{
+    // Complete the function
+    int i=0;
+    while(i<n)
+    {
+        if(arr[i]==x)
+        {
+            return i;
+        }
+        
+        i+=max(1,abs(x-arr[i])/k);
+    }
+    return -1;
+}   
+
+
+****************************************************************************************************************************
