@@ -1,0 +1,78 @@
+Given a dictionary of words and a pattern. Every character in the pattern is uniquely mapped to a character in the dictionary. 
+Find all such words in the dictionary that match the given pattern. 
+
+Example 1:
+
+Input:
+N = 4
+dict[] = {abb,abc,xyz,xyy}
+pattern  = foo
+Output: abb xyy
+Explanation: xyy and abb have the same
+character at index 1 and 2 like the
+pattern.
+
+
+
+******************************************************************************************************************************************************************
+
+
+
+
+vector<string> findMatchedWords(vector<string> dict,string pattern)
+{
+       //Your code here
+       vector<string>ans; 
+       int j;
+       for(int i=0;i<dict.size();i++)
+       {
+           // If patern size and word size are not same no need to proceed, skip that word
+           if(pattern.size()!=dict[i].size()) 
+           {
+               continue;
+           }
+           else
+           {
+               /* Logic:  Match every character of pattern with corresponding character of word.
+               f->a
+               o->b
+               o->b
+               
+               If each instance of characters of pattern is mapped to the same character of word,then 
+               this word is our answer. 
+               
+               In the above example:  f->a, o->b , o->b 
+               each instance of "o" is mapped to same character "b" and each instance of "f" is mapped to 
+               "a". Henceforth this is valid word.
+               
+               Now consider the example,
+               word= abc
+               pattern= foo
+               Mappings are : f->a , o->b , o->c .
+               Here each isntance of "o" is mapped with different characters, one is mapped with
+               "b" while other is mapped with "c". That's why this is not a valid word.
+               
+               
+               */
+               unordered_map<char,char>mp; //map for mapping pattern charcters with word in dictionary
+               for(j=0;j<pattern.size();j++)
+               {
+                   if(mp.find(pattern[j])==mp.end())
+                   {
+                       mp[pattern[j]]=dict[i][j];
+                   }
+                   else if(mp[pattern[j]]!=dict[i][j])// case where we have different mappings for same character (o->b, o->c)
+                   { 
+                       break;
+                   }
+               }
+               if(j==pattern.size()){ // Will reach here only if the word is a valid one, append this word in answer vector.
+                   ans.push_back(dict[i]);
+               }
+           }
+       }
+       return ans;
+}
+
+
+******************************************************************************************************************************************************************
