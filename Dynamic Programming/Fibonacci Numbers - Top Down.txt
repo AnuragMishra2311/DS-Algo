@@ -1,0 +1,9 @@
+long long findNthFibonacci(int number, long long int dp[])
+{
+        // Your Code Here
+        for(int i=2;i<=number;i++)
+        {
+            dp[i]=dp[i-1]+dp[i-2];
+        }
+        return dp[number];
+}

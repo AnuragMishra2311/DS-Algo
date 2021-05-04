@@ -1,0 +1,20 @@
+vector<long long>memo(1000,-1);
+
+long long findNthFibonacci(int number)
+{
+        long long res;
+        
+        if(memo[number]==-1)
+        {
+            if(number==0 || number==1)
+            {
+                memo[number]=number;
+            }
+            else
+            {
+                memo[number]=findNthFibonacci(number-1)+findNthFibonacci(number-2);
+            }
+        }
+        return memo[number];
+        
+}
