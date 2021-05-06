@@ -1,0 +1,57 @@
+https://practice.geeksforgeeks.org/problems/children-sum-parent/1/?track=P100-Tree&batchId=197#
+
+
+Given a Binary Tree. Check whether all of its nodes have the value equal to the sum of their child nodes.
+
+
+Example 1:
+
+Input:
+     10
+    /
+  10 
+Output: 1
+Explanation: Here, every node is sum of
+its left and right child.
+
+
+*******************************************************************************************************************************************************
+/*
+       Logic: 
+       Step 1: Push nodes in queue.
+       Step 2: Store front node in temp
+       Step 3: Check whether temp->left and temp->right exists, if exists then push them to q and add them to cnt.
+       Step 4: Now check whether cnt==temp->data, Note this condition must not be checked for leaf nodes
+*/
+int isSumProperty(Node *root)
+{
+    // Add your code here
+    queue<Node*>q;
+    q.push(root);
+    int cnt;
+    while(q.empty()!=true)
+    {
+        Node *temp=q.front();
+        cnt=0;
+        if(temp->left)
+        {
+            q.push(temp->left);
+            cnt+=temp->left->data;
+        }
+        if(temp->right)
+        {
+            q.push(temp->right);
+            cnt+=temp->right->data;
+        }
+        
+        // Note this condition, the second one is due to leaf nodes. 
+        if(cnt!=temp->data && (temp->left || temp->right))
+        {
+            return 0;
+        }
+        q.pop();
+    }
+    return 1;
+}
+
+*******************************************************************************************************************************************************
