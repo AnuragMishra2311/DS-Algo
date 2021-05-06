@@ -1,0 +1,29 @@
+TreeNode* invertTree(TreeNode* root) 
+{
+        if(root==NULL)
+        {
+            return root;
+        }
+        
+        queue<TreeNode*>q;
+        TreeNode *temp,*left,*right;
+        q.push(root);
+        while(q.empty()!=true)
+        {
+            temp=q.front();
+            left=temp->left;
+            right=temp->right;
+            q.pop();
+            if(left)
+            {
+                q.push(left);
+            }
+            if(right)
+            {
+                q.push(right);
+            }
+            temp->left=right;
+            temp->right=left;
+        }
+        return root;
+}
