@@ -1,0 +1,30 @@
+int helper(int W, int wt[], int val[], int n,int dp[][1001])
+{
+       //Base case 
+       if(n==0 || W==0)
+       {
+           return 0;
+       }
+
+       if(dp[W][n]!=-1)
+       {
+           return dp[W][n];
+       }
+
+       if(wt[n-1]<=W)
+       {
+           return dp[W][n]=max(val[n-1]+helper(W-wt[n-1],wt,val,n-1,dp),helper(W,wt,val,n-1,dp));
+       }
+
+       else if(wt[n-1]>W)
+       {
+           return dp[W][n]=helper(W,wt,val,n-1,dp);
+       }
+}
+
+int knapSack(int W, int wt[], int val[], int n) 
+{ 
+   int dp[1001][1001];
+   memset(dp,-1,sizeof(dp));
+   return helper(W,wt,val,n,dp);
+}
