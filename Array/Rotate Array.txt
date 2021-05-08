@@ -1,0 +1,23 @@
+void help(int low,int high,vector<int>& nums)
+{
+    while(high>low)
+    {
+        int temp=nums[low];
+        nums[low]=nums[high];
+        nums[high]=temp;
+        high-=1;
+        low+=1;
+    }
+}
+
+
+void rotate(vector<int>& nums, int k) 
+    {
+        int n=nums.size();
+        k=k%n;
+        help(0,n-1,nums);
+        help(k,n-1,nums);
+        help(0,k-1,nums);
+        
+        
+    }
