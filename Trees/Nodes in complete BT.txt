@@ -1,0 +1,22 @@
+   int countNodes(TreeNode* root) 
+    {
+        int left_count=0,right_count=0;
+        TreeNode *current=root;
+        while(current!=NULL)
+        {
+            left_count+=1;
+            current=current->left;
+        }
+        current=root;
+        while(current!=NULL)
+        {
+            right_count+=1;
+            current=current->right;
+        }
+        
+        if(right_count==left_count)
+        {
+            return pow(2,left_count)-1;
+        }
+        return 1+countNodes(root->left)+countNodes(root->right);
+    }
