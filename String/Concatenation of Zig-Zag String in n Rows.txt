@@ -1,0 +1,72 @@
+Given a string and number of rows ‘n’. Print the string formed by concatenating n rows when the input string is written in row-wise Zig-Zag fashion.
+
+Example 1:
+
+Input: 
+str = "GEEKSFORGEEKS"
+n = 3
+Output: GSGSEKFREKEOE
+Explanation: 
+Let us write input string in 
+Zig-Zag fashion in 3 rows.
+G       S       G       S
+  E   K   F   R   E   K
+    E       O       E
+Now concatenate the two rows and ignore spaces in every row. We get "GSGSEKFREKEOE"
+
+
+*****************************************************************************************************************************************************************
+
+string convert(string s, int n) 
+    {
+        //code
+        if(n==1)
+        {
+            return s;
+        }
+        int n_copy=n,i=0,maximum=(n-1)*2,starting_element;
+        int arr[2]={maximum,0},count;
+        string ans="";
+        
+        while(n_copy>=1)
+        {
+            starting_element=i;   
+            if(n_copy==1 || n_copy==n) 
+            {
+                while(i<s.size())
+                {
+                    ans+=s[i];
+                    i+=maximum;
+                }
+            }
+            
+            else
+            {
+                arr[0]-=2;
+                arr[1]+=2;
+                count=0;
+                while(i<s.size())
+                {
+                    if(count%2==0)
+                    {
+                        ans+=s[i];
+                        i+=arr[0];
+                    }
+                    else if(count%2!=0)
+                    {
+                        ans+=s[i];
+                        i+=arr[1];
+                    }
+                    count+=1;
+                }
+            }
+            n_copy-=1;
+            i=starting_element+1;
+        }
+        
+        return ans;
+        
+    }
+
+
+*****************************************************************************************************************************************************************
