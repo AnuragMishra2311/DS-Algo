@@ -1,6 +1,20 @@
-LEETCODE 494
+https://leetcode.com/problems/target-sum/
 
 
+
+Why special treatment to 0 ?
+
+you can give any sign to 0 no matter 1+0 or 1-0 both are same so they will not be counted in Top down approach .
+for example we have array [0,0,1] and target sum is 1. first we will check with non zeros that is only 1 now check with 0s. 
+you can see 
++0+0+1,
++0-0+1,
+-0-0+1,-0+0+1 
+Number of cases are pow(2,number of 0's).
+
+
+
+**********************************************************************************************************************************************************
 
 int findTargetSumWays(vector<int>& nums, int target) {
      int sum=0;
