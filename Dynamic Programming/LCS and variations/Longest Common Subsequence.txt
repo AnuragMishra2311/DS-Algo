@@ -21,7 +21,6 @@ int lcs(int m, int n,string X, string Y)
 {
     
     int dp[m+1][n+1],i,j;
-    memset(dp,-1,sizeof(dp));
     for(i=0;i<m+1;i++)
     {
         for(j=0;j<n+1;j++)
