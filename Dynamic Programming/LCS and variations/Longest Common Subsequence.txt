@@ -1,0 +1,53 @@
+https://practice.geeksforgeeks.org/problems/longest-common-subsequence-1587115620/1/?track=P100-DP&batchId=197#
+
+
+Given two sequences, find the length of longest subsequence present in both of them. Both the strings are of uppercase.
+
+Example 1:
+
+Input:
+A = 6, B = 6
+str1 = ABCDGH
+str2 = AEDFHR
+Output: 3
+Explanation: LCS for input Sequences
+“ABCDGH” and “AEDFHR” is “ADH” of
+length 3.
+
+
+******************************************************************************************************************************************
+
+int lcs(int m, int n,string X, string Y)
+{
+    
+    int dp[m+1][n+1],i,j;
+    memset(dp,-1,sizeof(dp));
+    for(i=0;i<m+1;i++)
+    {
+        for(j=0;j<n+1;j++)
+        {
+            if(i==0 || j==0)
+            {
+                dp[i][j]=0;
+            }
+        }
+    }
+    
+    for(i=1;i<m+1;i++)
+    {
+        for(j=1;j<n+1;j++)
+        {
+            if(X[i-1]==Y[j-1])
+            {
+                dp[i][j]=1+dp[i-1][j-1];
+            }
+            else
+            {
+                dp[i][j]=max(dp[i][j-1],dp[i-1][j]);
+            }
+        }
+    }
+    
+    return dp[m][n];
+  
+}
