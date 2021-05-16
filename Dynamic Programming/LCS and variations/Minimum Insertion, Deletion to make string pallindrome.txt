@@ -1,0 +1,50 @@
+https://practice.geeksforgeeks.org/problems/minimum-deletitions1648/1
+
+https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/
+
+
+
+
+Given a string of S as input. Your task is to write a program to remove or delete the minimum number of characters 
+from the string so that the resultant string is a palindrome.
+
+
+
+****************************************************************************************************************************************************************
+
+int minimumNumberOfDeletions(string S1) 
+{ 
+        /*Logic : Find LCS b/w S1 and reverse of S1.The LCS formed will be longest pallindrome
+        which can be made using the string S1. Return len(S1)-LCS.*/
+    int n=S1.size();
+    int dp[n+1][n+1],i,j;
+    
+    string S2=S1;
+    reverse(S2.begin(),S2.end());
+    for(i=0;i<n+1;i++)
+    {
+        for(j=0;j<n+1;j++)
+        {
+            if(i==0 || j==0)
+            {
+                dp[i][j]=0;
+            }
+        }
+    }
+    
+    for(i=1;i<n+1;i++)
+    {
+        for(j=1;j<n+1;j++)
+        {
+            if(S1[i-1]==S2[j-1])
+            {
+                dp[i][j]=1+dp[i-1][j-1];
+            }
+            else
+            {
+                dp[i][j]=max(dp[i][j-1],dp[i-1][j]);
+            }
+        }
+    }
+    return n-dp[n][n];
+} 
