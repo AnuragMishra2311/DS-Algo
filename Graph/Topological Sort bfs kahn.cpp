@@ -1,3 +1,6 @@
+// https://practice.geeksforgeeks.org/problems/topological-sort/1
+	
+	
 	vector<int> topoSort(int V, vector<int> adj[]) 
 	{
 	    // code here
@@ -5,6 +8,7 @@
 	    queue<int>q;
 	    vector<int>ans;
 	    
+		// Calculating indegree
 	    for(int i=0;i<V;i++)
 	    {
 	        for(auto x:adj[i])
@@ -13,6 +17,7 @@
 	        }
 	    }
 	    
+		// push nodes with indegree 0 into q.
 	    for(int i=0;i<V;i++)
 	    {
 	        if(indegree[i]==0)
