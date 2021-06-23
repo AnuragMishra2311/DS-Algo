@@ -4,6 +4,13 @@ https://practice.geeksforgeeks.org/problems/next-larger-element-1587115620/1#
 
 Approach: The elements in stack will always be in increasing order.
 
+Do the following:
+
+    1. keep popping until stack is not empty and s.top < arr[i]
+    2. if stack is empty, ans[i] = -1 else ans[i] = s.top
+    3. push arr[i] into stack
+
+
 Time Complexity  : O(N)
 Space Complexity : O(N)
 
