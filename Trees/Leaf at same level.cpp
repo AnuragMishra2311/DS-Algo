@@ -1,7 +1,6 @@
-/* 
+// https://practice.geeksforgeeks.org/problems/leaf-at-same-level/1# 
 
-https://practice.geeksforgeeks.org/problems/leaf-at-same-level/1# 
- 
+/* 
 Approach : Level by level traversal. At any level if any of the node is leaf but not all nodes are leaf, that means 
 all leaf nodes are not at same level.
 
@@ -44,3 +43,39 @@ Space Complexity : O(Max no of nodes in a level)
         
         return true;
     }
+
+/*
+
+Recursive Approach:
+
+Initialize check = -1, this will store the level of first (leftmost) leaf node. Next time whenever leaf node is emcountered
+and it's level is not equal to check, return false. 
+
+Time Complexity : O(N)
+Space Complexity : O(H)
+
+*/
+
+
+bool helper(Node *root, int level, int &check)
+{
+    if(!root)
+        return true;
+        
+    if(root->right == NULL and root->left == NULL )
+    {
+        if(check==-1) // encountered first leaf node.
+            check = level;
+            
+        if(check != level) // if level of this leaf node is not equal to level of first leaf node, return flase.
+            return false;
+    }
+    
+    return helper(root->left, level+1, check) and helper(root->right, level+1, check);
+}
+
+bool check(Node *root)
+{        
+    int level = 0, check = -1;
+    return helper(root, level, check);
+}
