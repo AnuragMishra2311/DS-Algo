@@ -1,5 +1,38 @@
 // https://practice.geeksforgeeks.org/problems/check-for-balanced-tree/1#
 
+
+/*
+
+Maintain a pass by reference valid variable and set it to false, if any subtree is not balanced.
+
+Time Complexity : O(N)
+Spcae Complexity : O(H)
+
+*/
+
+int height(Node *root, bool &valid)
+{
+        if(!root)
+            return 0;
+        
+        int left_height = height(root->left, valid);
+        int right_height = height(root->right, valid);
+        
+        if( abs(left_height - right_height)>1 ) // If any subtree is not balanced, then set valid as false.
+            valid = false;
+        
+        return 1 + max(left_height, right_height);
+}
+
+
+bool isBalanced(Node *root)
+{
+    bool valid=true;
+    height(root, valid);
+    return valid;
+}
+
+
 /*
 
 Approach:  Keep appending abs(left_height - right_height) in a vector. Traverse the vector if any element is greater
@@ -39,7 +72,7 @@ bool isBalanced(Node *root)
 }
 
 
-// O(N^2) Time Complexity
+// Brute Force O(N^2) Time Complexity
 
 int height(Node *root)
 {
