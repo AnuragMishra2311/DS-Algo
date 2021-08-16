@@ -15,12 +15,14 @@ void print_max_sum_subarray(int arr[], int n)
     
     for(int i=1; i<n; i++)
     {
+        // Including element in current subarray
         if( arr[i] + current_sum > arr[i])
         {
             end += 1;
             current_sum += arr[i];
         }
         
+        // starting new subarray
         else
         {
             current_sum = arr[i];
