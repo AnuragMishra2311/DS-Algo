@@ -24,6 +24,10 @@ dp[3] = 1 + max( dp[j], such that j is factor of 3 ) we don't have any factor of
 
 dp[4] = 1 + max( dp[j], such that j is factor of 4 ) = 1 + dp[2]  =  1 + 1 = 2
  
+ 
+Time Complexity : O(N*N)
+Space Complrxity : O(N)
+
 */
 
 #include <bits/stdc++.h>
