@@ -64,8 +64,8 @@ class GFG {
 	                maximumLength = Math.max(maximumLength, k-j+1);
 	            }
 	            
-	            j -= 1;
-	            k += 1;
+	            j -= 1; // Expand substring in left direction.
+	            k += 1; // Expand substring in right direction.
 	        }
 	    }
 
